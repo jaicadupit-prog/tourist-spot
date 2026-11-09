@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover the Philippines - Pearl of the Orient Seas</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    },
+                    colors: {
+                        phYellow: '#FCD116',
+                        phBlue: '#0038A8',
+                        phRed: '#CE1126',
+                        phTeal: '#0D9488',
+                        phSand: '#FDFBF7'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .hero-gradient {
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.4) 0%, rgba(15, 23, 42, 0.8) 100%);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #0d9488;
+            border-radius: 10px;
+        }
+        .island-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .island-hover:hover {
+            transform: translateY(-6px);
+        }
+    </style>
+</head>
+<body class="bg-phSand text-slate-800 font-sans antialiased custom-scrollbar">
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="mainHeader">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="scrollToTop()">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-phBlue via-phTeal to-phYellow flex items-center justify-center text-white shadow-md">
+                        <i class="fa-solid font-bold text-lg">🇵🇭</i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-extrabold tracking-tight text-white drop-shadow-md">MABUHAY<span class="text-phYellow">.ph</span></span>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#destinations" class="text-white hover:text-phYellow font-medium transition-colors">Destinations</a>
+                    <a href="#experiences" class="text-white hover:text-phYellow font-medium transition-colors">Experiences</a>
+                    <a href="#culture" class="text-white hover:text-phYellow font-medium transition-colors">Culture & Cuisine</a>
+                    <a href="#planner" class="text-white hover:text-phYellow font-medium transition-colors">Trip Planner</a>
+                    <a href="#calculator" class="text-white hover:text-phYellow font-medium transition-colors">Budget Calculator</a>
+                    <button onclick="openModal('quickInfoModal')" class="bg-phYellow text-slate-900 hover:bg-yellow-400 px-5 py-2.5 rounded-full font-bold shadow-lg transition-all hover:scale-105 active:scale-95">
+                        <i class="fa-solid fa-plane-departure mr-2"></i>Travel Info
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuBtn" class="text-white hover:text-phYellow p-2 focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-slate-900/95 backdrop-blur-md text-white px-4 pt-2 pb-6 space-y-3">
+            <a href="#destinations" class="block px-3 py-2 rounded-md hover:bg-slate-800 font-medium">Destinations</a>
+            <a href="#experiences" class="block px-3 py-2 rounded-md hover:bg-slate-800 font-medium">Experiences</a>
+            <a href="#culture" class="block px-3 py-2 rounded-md hover:bg-slate-800 font-medium">Culture & Cuisine</a>
+            <a href="#planner" class="block px-3 py-2 rounded-md hover:bg-slate-800 font-medium">Trip Planner</a>
+            <a href="#calculator" class="block px-3 py-2 rounded-md hover:bg-slate-800 font-medium">Budget Calculator</a>
+            <button onclick="openModal('quickInfoModal')" class="w-full text-left bg-phYellow text-slate-900 px-4 py-2.5 rounded-xl font-bold mt-2">
+                <i class="fa-solid fa-plane-departure mr-2"></i>Travel Info
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section with Background Slider/Video Effect -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <!-- Background Banner Images -->
+        <div class="absolute inset-0 z-0">
+            <img id="heroBg" src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?q=80&w=1920&auto=format&fit=crop" 
+                 alt="Philippines Beach" 
+                 class="w-full h-full object-cover transition-opacity duration-1000 scale-105 animate-pulse" style="animation-duration: 8s;">
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4 text-center text-white space-y-6">
+            <div class="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-md border border-white/30 rounded-full px-4 py-1.5 text-sm font-medium">
+                <span class="flex h-2 w-2 relative">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-phYellow opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-phYellow"></span>
+                </span>
+                <span>It's More Fun in the Philippines</span>
+            </div>
+            
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold font-serif tracking-tight leading-tight">
+                Explore 7,641 Islands of <span class="text-transparent bg-clip-text bg-gradient-to-r from-phYellow via-amber-300 to-teal-300">Pure Wonders</span>
+            </h1>
+            
+            <p class="text-lg sm:text-xl text-slate-200 max-w-2xl mx-auto font-light leading-relaxed">
+                From emerald rice terraces and crystal-clear turquoise waters to pristine white sand beaches and unmatched hospitality. Your paradise awaits.
+            </p>
+
+            <!-- Search / Filter Bar -->
+            <div class="max-w-3xl mx-auto pt-6">
+                <div class="glass-card p-3 rounded-2xl sm:rounded-full shadow-2xl flex flex-col sm:flex-row items-center gap-3 text-slate-800">
+                    <div class="relative w-full sm:w-1/3">
+                        <i class="fa-solid fa-location-dot absolute left-4 top-1/2 -translate-y-1/2 text-phTeal"></i>
+                        <select id="heroRegionSelect" class="w-full pl-10 pr-4 py-3 bg-transparent rounded-full font-medium border-none focus:ring-2 focus:ring-phTeal text-sm appearance-none cursor-pointer">
+                            <option value="all">All Regions</option>
+                            <option value="Luzon">Luzon (Heritage & Mountains)</option>
+                            <option value="Visayas">Visayas (Beaches & Festivals)</option>
+                            <option value="Mindanao">Mindanao (Nature & Adventure)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="relative w-full sm:w-1/3 border-t sm:border-t-0 sm:border-l border-slate-200 pt-2 sm:pt-0">
+                        <i class="fa-solid fa-compass absolute left-4 top-1/2 -translate-y-1/2 text-phTeal"></i>
+                        <select id="heroVibeSelect" class="w-full pl-10 pr-4 py-3 bg-transparent rounded-full font-medium border-none focus:ring-2 focus:ring-phTeal text-sm appearance-none cursor-pointer">
+                            <option value="all">All Travel Vibes</option>
+                            <option value="Beach">Island & Beaches</option>
+                            <option value="Adventure">Hiking & Adventure</option>
+                            <option value="Culture">History & Culture</option>
+                            <option value="Diving">Diving & Marine Life</option>
+                        </select>
+                    </div>
+
+                    <button onclick="applyHeroFilter()" class="w-full sm:w-auto bg-phTeal text-white font-semibold px-8 py-3.5 rounded-full hover:bg-teal-700 transition-all flex items-center justify-center space-x-2 shadow-md">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <span>Explore Now</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 max-w-4xl mx-auto border-t border-white/10">
+                <div class="text-center">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-phYellow">7,641</div>
+                    <div class="text-xs text-slate-300">Tropical Islands</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-phYellow">UNESCO</div>
+                    <div class="text-xs text-slate-300">World Heritage Sites</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-phYellow">#1</div>
+                    <div class="text-xs text-slate-300">Best Beaches Globally</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-phYellow">300+</div>
+                    <div class="text-xs text-slate-300">Languages & Dialects</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Destinations Section -->
+    <section id="destinations" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+            <div>
+                <span class="text-phTeal font-bold tracking-wider uppercase text-sm">Where to Go</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold font-serif text-slate-900 mt-1">Iconic Destinations</h2>
+            </div>
+            
+            <!-- Category Filter Buttons -->
+            <div class="flex flex-wrap gap-2 mt-4 md:mt-0" id="filterBtnGroup">
+                <button onclick="filterDestinations('all')" class="filter-btn active bg-phTeal text-white px-4 py-2 rounded-full text-sm font-semibold transition-all shadow-sm">All Islands</button>
+                <button onclick="filterDestinations('Luzon')" class="filter-btn bg-white hover:bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold transition-all shadow-sm">Luzon</button>
+                <button onclick="filterDestinations('Visayas')" class="filter-btn bg-white hover:bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold transition-all shadow-sm">Visayas</button>
+                <button onclick="filterDestinations('Mindanao')" class="filter-btn bg-white hover:bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold transition-all shadow-sm">Mindanao</button>
+            </div>
+        </div>
+
+        <!-- Destination Cards Grid -->
+        <div id="destinationGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Cards rendered dynamically via JS -->
+        </div>
+    </section>
+
+    <!-- Interactive Island Map Explorer Section -->
+    <section class="py-16 bg-slate-900 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-phYellow font-bold tracking-wider uppercase text-sm">Interactive Map</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-extrabold mt-1">Explore by Region</h2>
+                <p class="text-slate-400 mt-2">Click on an island cluster below to discover unique highlights and regional culture.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                <!-- Interactive Regional Selector Cards -->
+                <div class="space-y-4">
+                    <div onclick="selectRegionMap('Luzon')" id="mapCard-Luzon" class="region-map-card p-5 rounded-2xl bg-slate-800 border-2 border-phTeal cursor-pointer transition-all hover:scale-102">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-xl font-bold text-phYellow">1. Luzon Island Group</h3>
+                            <span class="text-xs font-semibold px-2.5 py-1 bg-amber-500/20 text-amber-300 rounded-full">North Region</span>
+                        </div>
+                        <p class="text-sm text-slate-300 mt-2">Home to the capital Manila, ancient Banaue Rice Terraces, historic Vigan, and Mt. Mayon.</p>
+                        <div class="mt-3 flex items-center text-xs text-phTeal font-semibold">
+                            <span>Explore 3,000+ Islands</span> <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </div>
+                    </div>
+
+                    <div onclick="selectRegionMap('Visayas')" id="mapCard-Visayas" class="region-map-card p-5 rounded-2xl bg-slate-800/60 border-2 border-transparent hover:border-slate-700 cursor-pointer transition-all hover:scale-102">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-xl font-bold text-white">2. Visayas Island Cluster</h3>
+                            <span class="text-xs font-semibold px-2.5 py-1 bg-cyan-500/20 text-cyan-300 rounded-full">Central Region</span>
+                        </div>
+                        <p class="text-sm text-slate-300 mt-2">Tropical paradise hub including Boracay, Cebu, Bohol Chocolate Hills, and Palawan.</p>
+                        <div class="mt-3 flex items-center text-xs text-phTeal font-semibold">
+                            <span>Explore 2,100+ Islands</span> <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </div>
+                    </div>
+
+                    <div onclick="selectRegionMap('Mindanao')" id="mapCard-Mindanao" class="region-map-card p-5 rounded-2xl bg-slate-800/60 border-2 border-transparent hover:border-slate-700 cursor-pointer transition-all hover:scale-102">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-xl font-bold text-white">3. Mindanao & Islands</h3>
+                            <span class="text-xs font-semibold px-2.5 py-1 bg-emerald-500/20 text-emerald-300 rounded-full">South Region</span>
+                        </div>
+                        <p class="text-sm text-slate-300 mt-2">Surfing capital Siargao, Enchanted River, Mt. Apo, and rich indigenous cultures.</p>
+                        <div class="mt-3 flex items-center text-xs text-phTeal font-semibold">
+                            <span>Explore 2,000+ Islands</span> <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual Region Spotlight Box -->
+                <div class="lg:col-span-2 bg-slate-800 rounded-3xl p-6 sm:p-8 border border-slate-700 relative overflow-hidden shadow-2xl">
+                    <div id="regionSpotlight">
+                        <!-- Loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Unforgettable Experiences Carousel/Grid -->
+    <section id="experiences" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-phTeal font-bold tracking-wider uppercase text-sm">Activities & Adventures</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold font-serif text-slate-900 mt-1">Unforgettable Island Experiences</h2>
+            <p class="text-slate-600 mt-3">From diving into deep ocean trenches to flying over volcanic peaks, the Philippines offers adrenaline and serenity alike.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Experience 1 -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-md hover:shadow-xl transition-all group">
+                <div class="w-14 h-14 bg-blue-100 text-phBlue rounded-2xl flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-water font-bold"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-2">Island Hopping</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">Charter a traditional wooden *banca* boat and sail between secluded coves, hidden lagoons, and sandbars.</p>
+            </div>
+
+            <!-- Experience 2 -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-md hover:shadow-xl transition-all group">
+                <div class="w-14 h-14 bg-teal-100 text-phTeal rounded-2xl flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-fish font-bold"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-2">World-Class Diving</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">Explore Tubbataha Reefs, swim alongside gentle Whale Sharks in Apo Island, or dive WWII shipwrecks in Coron.</p>
+            </div>
+
+            <!-- Experience 3 -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-md hover:shadow-xl transition-all group">
+                <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-volcano font-bold"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-2">Volcano & Mountain Treks</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">Hike the crater lake of Mt. Pinatubo, admire the symmetrical cone of Mt. Mayon, or scale Mt. Apo.</p>
+            </div>
+
+            <!-- Experience 4 -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-md hover:shadow-xl transition-all group">
+                <div class="w-14 h-14 bg-rose-100 text-phRed rounded-2xl flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-icons font-bold"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-2">Vibrant Festivals</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">Dance to traditional beats at Sinulog, Ati-Atihan, or MassKara—celebrating life with color and music.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Culture & Food Showcase -->
+    <section id="culture" class="py-20 bg-amber-50/50 border-y border-amber-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <span class="text-phRed font-bold tracking-wider uppercase text-sm">Rich Heritage & Flavors</span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold font-serif text-slate-900 leading-tight">
+                        Taste & Feel the <span class="text-phRed">Filipino Warmth</span>
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        Filipino food is a soulful fusion of Malay origins, Spanish heritage, American influences, and Chinese flavors. Combined with legendary Filipino hospitality, every meal feels like a celebration.
+                    </p>
+
+                    <!-- Food Tabs interactive -->
+                    <div class="space-y-3 pt-2">
+                        <div onclick="showFoodDetail('adobo')" class="food-tab cursor-pointer p-4 rounded-xl bg-white shadow-sm hover:shadow-md border border-slate-200 transition-all flex items-center space-x-4">
+                            <span class="text-3xl">🍲</span>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Chicken/Pork Adobo</h4>
+                                <p class="text-xs text-slate-500">Savory stewed meat in soy sauce, vinegar, garlic, and bay leaves.</p>
+                            </div>
+                        </div>
+
+                        <div onclick="showFoodDetail('lechon')" class="food-tab cursor-pointer p-4 rounded-xl bg-white shadow-sm hover:shadow-md border border-slate-200 transition-all flex items-center space-x-4">
+                            <span class="text-3xl">🐖</span>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Cebu Lechon</h4>
+                                <p class="text-xs text-slate-500">Whole roasted pig with crisp golden skin and aromatic herbal stuffing.</p>
+                            </div>
+                        </div>
+
+                        <div onclick="showFoodDetail('halohalo')" class="food-tab cursor-pointer p-4 rounded-xl bg-white shadow-sm hover:shadow-md border border-slate-200 transition-all flex items-center space-x-4">
+                            <span class="text-3xl">🍨</span>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Halo-Halo</h4>
+                                <p class="text-xs text-slate-500">Iconic shaved ice dessert topped with sweet beans, ube ice cream, and flan.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                        <img id="foodDisplayImg" src="https://images.unsplash.com/photo-1541544741938-0af808871cc0?q=80&w=1000&auto=format&fit=crop" alt="Filipino Cuisine Feast" class="w-full h-[450px] object-cover transition-all duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-8">
+                            <div class="text-white">
+                                <span class="bg-phRed text-xs font-bold px-3 py-1 rounded-full uppercase">Must Try</span>
+                                <h3 id="foodTitle" class="text-2xl font-bold mt-2">Filipino Culinary Feast</h3>
+                                <p id="foodDesc" class="text-sm text-slate-200 mt-1">A celebration of flavor where family and friends gather over shared banana leaf spreads (Boodle Fight).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trip Planner Section -->
+    <section id="planner" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <span class="text-phTeal font-bold tracking-wider uppercase text-sm">Tailor Your Journey</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold font-serif text-slate-900 mt-1">Custom Travel Itinerary Builder</h2>
+            <p class="text-slate-600 mt-2">Build your custom dream schedule in the Philippines and calculate your ideal duration.</p>
+        </div>
+
+        <div class="bg-white rounded-3xl shadow-xl border border-slate-100 p-6 sm:p-10">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Controls -->
+                <div class="space-y-5 lg:border-r lg:border-slate-200 lg:pr-8">
+                    <h3 class="text-lg font-bold text-slate-900 border-b pb-3">1. Select Preferences</h3>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">Trip Duration</label>
+                        <select id="planDays" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-sm focus:ring-2 focus:ring-phTeal">
+                            <option value="3">3 Days (Quick Getaway)</option>
+                            <option value="7" selected>7 Days (Popular Highlights)</option>
+                            <option value="10">10 Days (Island Hopper Special)</option>
+                            <option value="14">14 Days (Ultimate Philippines Explorer)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">Primary Travel Style</label>
+                        <select id="planStyle" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-sm focus:ring-2 focus:ring-phTeal">
+                            <option value="beach">Island & Lagoon Relaxation</option>
+                            <option value="adventure">Action, Scuba & Trekking</option>
+                            <option value="culture">History, Architecture & Local Life</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">Starting Hub</label>
+                        <select id="planHub" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-sm focus:ring-2 focus:ring-phTeal">
+                            <option value="MNL">Manila (Ninoy Aquino Intl Airport - NAIA)</option>
+                            <option value="CEB">Cebu (Mactan-Cebu Intl Airport)</option>
+                        </select>
+                    </div>
+
+                    <button onclick="generateItinerary()" class="w-full bg-phTeal hover:bg-teal-700 text-white font-bold py-3.5 rounded-xl shadow-lg transition-all flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <span>Generate Custom Plan</span>
+                    </button>
+                </div>
+
+                <!-- Itinerary Result Output -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center justify-between border-b pb-3 mb-4">
+                        <h3 class="text-lg font-bold text-slate-900">2. Your Suggested Itinerary</h3>
+                        <span id="planSummaryTag" class="text-xs font-semibold bg-phTeal/10 text-phTeal px-3 py-1 rounded-full">7 Days Plan</span>
+                    </div>
+
+                    <div id="itineraryTimeline" class="space-y-4 max-h-[420px] overflow-y-auto pr-2 custom-scrollbar">
+                        <!-- Loaded dynamically -->
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div class="text-xs text-slate-500">
+                            <i class="fa-solid fa-circle-info mr-1 text-phTeal"></i> Standard domestic flight transfers recommended between islands.
+                        </div>
+                        <button onclick="copyItinerary()" class="text-sm font-bold text-phTeal hover:text-teal-800 flex items-center space-x-1">
+                            <i class="fa-regular fa-copy"></i>
+                            <span>Copy Plan to Clipboard</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Budget Calculator -->
+    <section id="calculator" class="py-20 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-12">
+                <span class="text-phYellow font-bold tracking-wider uppercase text-sm">Budget Planner</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-extrabold mt-1">Estimate Your Travel Costs</h2>
+                <p class="text-slate-400 mt-2">Get an estimated daily breakdown in USD / PHP for accommodations, food, and activities.</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto bg-slate-800 rounded-3xl p-6 sm:p-10 border border-slate-700 shadow-2xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="space-y-5">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Number of Travelers</label>
+                            <input type="number" id="calcPeople" value="2" min="1" max="10" oninput="calculateBudget()" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-white focus:ring-2 focus:ring-phYellow">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Duration (Nights)</label>
+                            <input type="number" id="calcNights" value="7" min="1" max="30" oninput="calculateBudget()" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-white focus:ring-2 focus:ring-phYellow">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Travel Style / Tier</label>
+                            <select id="calcTier" onchange="calculateBudget()" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-white focus:ring-2 focus:ring-phYellow">
+                                <option value="backpacker">Backpacker / Budget (~$35/day)</option>
+                                <option value="mid" selected>Mid-Range Comfortable (~$90/day)</option>
+                                <option value="luxury">Luxury & Private Resorts (~$250+/day)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Output Card -->
+                    <div class="bg-slate-900 rounded-2xl p-6 border border-slate-700 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Estimated Total Trip Cost</span>
+                            <div class="mt-2 flex items-baseline space-x-2">
+                                <span id="calcTotalUSD" class="text-4xl sm:text-5xl font-extrabold text-phYellow">$1,260</span>
+                                <span class="text-slate-400 font-medium">USD</span>
+                            </div>
+                            <div id="calcTotalPHP" class="text-sm text-phTeal mt-1 font-semibold">≈ ₱70,560 PHP</div>
+                        </div>
+
+                        <div class="space-y-3 pt-6 border-t border-slate-800 text-sm">
+                            <div class="flex justify-between text-slate-300">
+                                <span><i class="fa-solid fa-hotel text-phYellow mr-2"></i> Stay & Lodging:</span>
+                                <span id="calcStayUSD" class="font-bold">$630</span>
+                            </div>
+                            <div class="flex justify-between text-slate-300">
+                                <span><i class="fa-solid fa-utensils text-phYellow mr-2"></i> Food & Dining:</span>
+                                <span id="calcFoodUSD" class="font-bold">$350</span>
+                            </div>
+                            <div class="flex justify-between text-slate-300">
+                                <span><i class="fa-solid fa-route text-phYellow mr-2"></i> Activities & Ferries:</span>
+                                <span id="calcActUSD" class="font-bold">$280</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 text-xs text-slate-500 italic">
+                            *Excludes international flights. Rates based on average national tourist estimates.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Essential Travel Tips Accordion & FAQ -->
+    <section class="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <span class="text-phTeal font-bold tracking-wider uppercase text-sm">Good to Know</span>
+            <h2 class="text-3xl sm:text-4xl font-serif font-extrabold text-slate-900 mt-1">Frequently Asked Questions</h2>
+        </div>
+
+        <div class="space-y-4" id="faqAccordion">
+            <!-- Item 1 -->
+            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                <button onclick="toggleFaq(1)" class="w-full px-6 py-4 text-left font-bold text-slate-900 flex justify-between items-center focus:outline-none">
+                    <span>When is the best time to visit the Philippines?</span>
+                    <i id="faqIcon-1" class="fa-solid fa-chevron-down text-phTeal transition-transform"></i>
+                </button>
+                <div id="faqAns-1" class="hidden px-6 pb-4 text-slate-600 text-sm leading-relaxed">
+                    The dry season runs from <strong>November to April</strong>, making it the ideal time to travel. Peak summer months are March to May, perfect for beach activities and island hopping.
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                <button onclick="toggleFaq(2)" class="w-full px-6 py-4 text-left font-bold text-slate-900 flex justify-between items-center focus:outline-none">
+                    <span>Do I need a visa to visit?</span>
+                    <i id="faqIcon-2" class="fa-solid fa-chevron-down text-phTeal transition-transform"></i>
+                </button>
+                <div id="faqAns-2" class="hidden px-6 pb-4 text-slate-600 text-sm leading-relaxed">
+                    Tourists from over 150 countries (including USA, Canada, UK, EU, Australia, and ASEAN nations) can enter visa-free for up to 30 days, provided they hold a valid return ticket.
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                <button onclick="toggleFaq(3)" class="w-full px-6 py-4 text-left font-bold text-slate-900 flex justify-between items-center focus:outline-none">
+                    <span>What language is spoken?</span>
+                    <i id="faqIcon-3" class="fa-solid fa-chevron-down text-phTeal transition-transform"></i>
+                </button>
+                <div id="faqAns-3" class="hidden px-6 pb-4 text-slate-600 text-sm leading-relaxed">
+                    Filipino (Tagalog) is the national language, but <strong>English is widely spoken across all islands</strong> as an official language. Navigating, dining, and chatting with locals in English is effortless!
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                <button onclick="toggleFaq(4)" class="w-full px-6 py-4 text-left font-bold text-slate-900 flex justify-between items-center focus:outline-none">
+                    <span>How do I travel between islands?</span>
+                    <i id="faqIcon-4" class="fa-solid fa-chevron-down text-phTeal transition-transform"></i>
+                </button>
+                <div id="faqAns-4" class="hidden px-6 pb-4 text-slate-600 text-sm leading-relaxed">
+                    Domestic airlines (Cebu Pacific, Philippine Airlines, AirAsia) connect main cities. Fast ferries and local motorized outrigger boats (*outriggers/bancas*) connect neighboring islands.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-white pt-16 pb-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
+                <div class="space-y-4 md:col-span-1">
+                    <span class="text-2xl font-extrabold tracking-tight text-white">MABUHAY<span class="text-phYellow">.ph</span></span>
+                    <p class="text-xs text-slate-400 leading-relaxed">Your ultimate digital guide to discovering the unmatched beauty, warm hospitality, and rich culture of the Philippine Islands.</p>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-bold text-phYellow uppercase tracking-wider mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-xs text-slate-400">
+                        <li><a href="#destinations" class="hover:text-white transition-colors">Top Destinations</a></li>
+                        <li><a href="#experiences" class="hover:text-white transition-colors">Things to Do</a></li>
+                        <li><a href="#culture" class="hover:text-white transition-colors">Food & Culture</a></li>
+                        <li><a href="#planner" class="hover:text-white transition-colors">Itinerary Builder</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-bold text-phYellow uppercase tracking-wider mb-4">Popular Spots</h4>
+                    <ul class="space-y-2 text-xs text-slate-400">
+                        <li><a href="#destinations" onclick="filterDestinations('Visayas')" class="hover:text-white transition-colors">El Nido & Coron</a></li>
+                        <li><a href="#destinations" onclick="filterDestinations('Visayas')" class="hover:text-white transition-colors">Boracay White Beach</a></li>
+                        <li><a href="#destinations" onclick="filterDestinations('Mindanao')" class="hover:text-white transition-colors">Siargao Cloud 9</a></li>
+                        <li><a href="#destinations" onclick="filterDestinations('Luzon')" class="hover:text-white transition-colors">Banaue Rice Terraces</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-bold text-phYellow uppercase tracking-wider mb-4">Connect</h4>
+                    <p class="text-xs text-slate-400 mb-3">Follow tourism updates & vibrant travel stories.</p>
+                    <div class="flex space-x-3 text-slate-400 text-lg">
+                        <a href="#" class="hover:text-phYellow transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="hover:text-phYellow transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="hover:text-phYellow transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="hover:text-phYellow transition-colors"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
+                <p>&copy; 2026 Discover Philippines Tourism Showcase. All rights reserved.</p>
+                <p class="mt-2 sm:mt-0">Crafted with ❤️ for Travelers Worldwide</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Destination Detail Modal -->
+    <div id="destModal" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative custom-scrollbar">
+            <button onclick="closeModal('destModal')" class="absolute top-4 right-4 bg-slate-900/60 hover:bg-slate-900 text-white w-9 h-9 rounded-full flex items-center justify-center z-10 transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modalContent">
+                <!-- Dynamically injected -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Travel Info Modal -->
+    <div id="quickInfoModal" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl relative">
+            <button onclick="closeModal('quickInfoModal')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <div class="flex items-center space-x-3 text-phTeal mb-4">
+                <i class="fa-solid fa-passport text-2xl"></i>
+                <h3 class="text-xl font-bold text-slate-900">Essential Tourist Guide</h3>
+            </div>
+            <div class="space-y-3 text-sm text-slate-600">
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                    <span class="font-bold text-slate-800">Currency:</span> Philippine Peso (PHP ₱). USD 1 ≈ ₱56.00 PHP.
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                    <span class="font-bold text-slate-800">Power Socket:</span> Type A, B, and C (220V, 60Hz). Bring a universal adapter.
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                    <span class="font-bold text-slate-800">SIM & Data:</span> Local eSIMs or SIM cards (Globe / Smart) available at international airports upon arrival.
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                    <span class="font-bold text-slate-800">Emergency Number:</span> 911 nationwide.
+                </div>
+            </div>
+            <button onclick="closeModal('quickInfoModal')" class="w-full mt-5 bg-phTeal text-white font-bold py-2.5 rounded-xl hover:bg-teal-700">Got it!</button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-xl z-50 transition-all transform translate-y-20 opacity-0 flex items-center space-x-3 border border-slate-700">
+        <i class="fa-solid fa-circle-check text-phYellow"></i>
+        <span id="toastMsg" class="text-sm font-medium">Notification message</span>
+    </div>
+
+    <!-- JavaScript Data and Dynamic Logic -->
+    <script>
+        // Destination Data Array
+        const destinations = [
+            {
+                id: 'palawan',
+                title: 'El Nido & Coron',
+                region: 'Visayas',
+                vibe: 'Beach',
+                image: 'https://images.unsplash.com/photo-1540202404-a2f29016b523?q=80&w=800&auto=format&fit=crop',
+                rating: '4.9',
+                tag: 'World\'s Best Island',
+                desc: 'Towering limestone cliffs rising from emerald-green lagoons, pristine hidden beaches, and spectacular wreck diving.',
+                highlights: ['Big Lagoon kayaking', 'Twin Lagoons Coron', 'Maquinit Hot Springs', 'Kayangan Lake']
+            },
+            {
+                id: 'boracay',
+                title: 'Boracay White Beach',
+                region: 'Visayas',
+                vibe: 'Beach',
+                image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop',
+                rating: '4.8',
+                tag: 'Powder-Soft Sands',
+                desc: 'Famous for its 4km stretch of powdery white sand, breathtaking sunsets, vibrant beach clubs, and water sports.',
+                highlights: ['Sunset Paraw Sailing', 'Willy\'s Rock', 'Puka Shell Beach', 'Kitesurfing at Bulabog']
+            },
+            {
+                id: 'siargao',
+                title: 'Siargao Island',
+                region: 'Mindanao',
+                vibe: 'Adventure',
+                image: 'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?q=80&w=800&auto=format&fit=crop',
+                rating: '4.9',
+                tag: 'Surfing Capital',
+                desc: 'Laid-back island vibe with world-renowned Cloud 9 surf breaks, coconut palm forests, and clear natural rock pools.',
+                highlights: ['Cloud 9 Boardwalk', 'Sugba Lagoon', 'Magpupungko Rock Pools', 'Coconut Mountain View']
+            },
+            {
+                id: 'banaue',
+                title: 'Banaue & Batad Rice Terraces',
+                region: 'Luzon',
+                vibe: 'Culture',
+                image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=800&auto=format&fit=crop',
+                rating: '4.9',
+                tag: 'UNESCO Heritage',
+                desc: '2,000-year-old amphitheater-like rice terraces hand-carved into the mountains by the indigenous Ifugao ancestors.',
+                highlights: ['Batad Amphitheater', 'Tappiya Falls trek', 'Ifugao Cultural Village', 'Apayao Lookout']
+            },
+            {
+                id: 'bohol',
+                title: 'Bohol & Chocolate Hills',
+                region: 'Visayas',
+                vibe: 'Adventure',
+                image: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800&auto=format&fit=crop',
+                rating: '4.7',
+                tag: 'Natural Wonder',
+                desc: 'Over 1,200 conical grass-covered hills that turn chocolate brown in summer. Home to the tiny Tarsier primates.',
+                highlights: ['Chocolate Hills Viewpoint', 'Tarsier Sanctuary', 'Loboc River Cruise', 'Panglao Reefs']
+            },
+            {
+                id: 'vigan',
+                title: 'Historic City of Vigan',
+                region: 'Luzon',
+                vibe: 'Culture',
+                image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop',
+                rating: '4.8',
+                tag: 'Spanish Heritage',
+                desc: 'Best-preserved example of a 16th-century Spanish colonial town in Asia with cobblestone streets and horse-drawn carriages.',
+                highlights: ['Calle Crisologo walk', 'Kalesa ride', 'Syquia Mansion museum', 'Empanada tasting']
+            }
+        ];
+
+        // Region Details Map Object
+        const regionDetails = {
+            'Luzon': {
+                title: 'Luzon Region',
+                subtitle: 'Heritage, Volcanoes & Cordillera Mountains',
+                desc: 'Luzon is the largest island group featuring historical cities like Manila & Vigan, mountain retreats in Baguio & Sagada, and majestic volcanic peaks like Mt. Mayon & Pinatubo.',
+                image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=800&auto=format&fit=crop',
+                topSpots: ['Banaue Rice Terraces', 'Intramuros Manila', 'Mt. Mayon Albay', 'Vigan Heritage']
+            },
+            'Visayas': {
+                title: 'Visayas Archipelago',
+                subtitle: 'World-famous White Beaches & Marine Life',
+                desc: 'The central island cluster famous for turquoise waters, vibrant coral reefs, world-renowned island hopping in Palawan and Boracay, and historic celebrations.',
+                image: 'https://images.unsplash.com/photo-1540202404-a2f29016b523?q=80&w=800&auto=format&fit=crop',
+                topSpots: ['El Nido & Coron', 'Boracay Island', 'Chocolate Hills Bohol', 'Cebu Diving']
+            },
+            'Mindanao': {
+                title: 'Mindanao & South Isles',
+                subtitle: 'Surf Breaks, Pristine Rivers & Culture',
+                desc: 'Mindanao offers untouched natural beauty—from Siargao\'s world-famous surf breaks to the mysterious Hinatuan Enchanted River and majestic Mt. Apo.',
+                image: 'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?q=80&w=800&auto=format&fit=crop',
+                topSpots: ['Siargao Island', 'Camiguin Island', 'Enchanted River', 'Davao & Mt. Apo']
+            }
+        };
+
+        // Initialize Page Features
+        document.addEventListener('DOMContentLoaded', () => {
+            renderDestinations(destinations);
+            selectRegionMap('Luzon');
+            calculateBudget();
+            generateItinerary();
+
+            // Header scroll effect
+            window.addEventListener('scroll', () => {
+                const header = document.getElementById('mainHeader');
+                if (window.scrollY > 50) {
+                    header.classList.add('bg-slate-900/90', 'backdrop-blur-md', 'shadow-lg');
+                } else {
+                    header.classList.remove('bg-slate-900/90', 'backdrop-blur-md', 'shadow-lg');
+                }
+            });
+
+            // Mobile menu toggle
+            document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+                const menu = document.getElementById('mobileMenu');
+                menu.classList.toggle('hidden');
+            });
+        });
+
+        // Render Destinations Cards
+        function renderDestinations(items) {
+            const grid = document.getElementById('destinationGrid');
+            grid.innerHTML = '';
+
+            if (items.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-500 font-medium">No destinations match your filters. Try selecting another region.</div>`;
+                return;
+            }
+
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-lg island-hover flex flex-col justify-between';
+                card.innerHTML = `
+                    <div>
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                            <span class="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md text-phYellow text-xs font-bold px-3 py-1 rounded-full">
+                                ${item.tag}
+                            </span>
+                            <span class="absolute top-4 right-4 bg-white/90 text-slate-800 text-xs font-bold px-2.5 py-1 rounded-full flex items-center space-x-1 shadow">
+                                <i class="fa-solid fa-star text-amber-400"></i>
+                                <span>${item.rating}</span>
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 text-xs font-semibold text-phTeal mb-1">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span>${item.region} • ${item.vibe}</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">${item.title}</h3>
+                            <p class="text-sm text-slate-600 line-clamp-2 leading-relaxed">${item.desc}</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-2">
+                        <button onclick="openDestModal('${item.id}')" class="w-full bg-slate-100 hover:bg-phTeal hover:text-white text-slate-800 font-bold py-2.5 rounded-xl text-sm transition-colors flex items-center justify-center space-x-2">
+                            <span>View Details</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Filter Destinations Function
+        function filterDestinations(region) {
+            const btns = document.querySelectorAll('.filter-btn');
+            btns.forEach(btn => {
+                btn.classList.remove('active', 'bg-phTeal', 'text-white');
+                btn.classList.add('bg-white', 'text-slate-700');
+            });
+
+            event.target.classList.add('active', 'bg-phTeal', 'text-white');
+            event.target.classList.remove('bg-white', 'text-slate-700');
+
+            if (region === 'all') {
+                renderDestinations(destinations);
+            } else {
+                const filtered = destinations.filter(d => d.region === region);
+                renderDestinations(filtered);
+            }
+        }
+
+        // Apply Search Filter from Hero
+        function applyHeroFilter() {
+            const region = document.getElementById('heroRegionSelect').value;
+            const vibe = document.getElementById('heroVibeSelect').value;
+
+            let results = destinations;
+            if (region !== 'all') {
+                results = results.filter(d => d.region === region);
+            }
+            if (vibe !== 'all') {
+                results = results.filter(d => d.vibe === vibe);
+            }
+
+            renderDestinations(results);
+            document.getElementById('destinations').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Interactive Map Region Selector
+        function selectRegionMap(regionKey) {
+            const info = regionDetails[regionKey];
+            const spotlight = document.getElementById('regionSpotlight');
+
+            // Toggle active card state
+            document.querySelectorAll('.region-map-card').forEach(c => {
+                c.classList.remove('border-phTeal', 'bg-slate-800');
+                c.classList.add('border-transparent', 'bg-slate-800/60');
+            });
+            const activeCard = document.getElementById(`mapCard-${regionKey}`);
+            if (activeCard) {
+                activeCard.classList.add('border-phTeal', 'bg-slate-800');
+                activeCard.classList.remove('border-transparent', 'bg-slate-800/60');
+            }
+
+            spotlight.innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                    <div>
+                        <span class="text-phYellow font-bold text-xs uppercase tracking-wider">${info.subtitle}</span>
+                        <h3 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">${info.title}</h3>
+                        <p class="text-sm text-slate-300 mt-3 leading-relaxed">${info.desc}</p>
+                        
+                        <div class="mt-4">
+                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Top Highlights:</h4>
+                            <div class="flex flex-wrap gap-2">
+                                ${info.topSpots.map(s => `<span class="bg-slate-700 text-phYellow text-xs font-medium px-3 py-1 rounded-full"><i class="fa-solid fa-check mr-1"></i>${s}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="h-64 rounded-2xl overflow-hidden shadow-lg border border-slate-700 relative">
+                        <img src="${info.image}" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            `;
+        }
+
+        // Food Showcase Switcher
+        const foodData = {
+            adobo: {
+                title: 'Chicken & Pork Adobo',
+                desc: 'Considered the unofficial national dish. Tender meat simmered in vinegar, soy sauce, crushed garlic, black peppercorns, and bay leaves.',
+                img: 'https://images.unsplash.com/photo-1541544741938-0af808871cc0?q=80&w=1000&auto=format&fit=crop'
+            },
+            lechon: {
+                title: 'Cebu Roasted Lechon',
+                desc: 'Crispy golden skin with succulent tender meat, slow-roasted over charcoal stuffed with lemongrass, star anise, and scallions.',
+                img: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1000&auto=format&fit=crop'
+            },
+            halohalo: {
+                title: 'Traditional Halo-Halo',
+                desc: 'The ultimate tropical refresher: shaved ice mixed with sweetened coconut strips, jackfruit, sago, leche flan, and topped with purple Ube ice cream.',
+                img: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=1000&auto=format&fit=crop'
+            }
+        };
+
+        function showFoodDetail(key) {
+            const item = foodData[key];
+            if (!item) return;
+            const imgEl = document.getElementById('foodDisplayImg');
+            imgEl.style.opacity = '0.3';
+            setTimeout(() => {
+                imgEl.src = item.img;
+                document.getElementById('foodTitle').innerText = item.title;
+                document.getElementById('foodDesc').innerText = item.desc;
+                imgEl.style.opacity = '1';
+            }, 250);
+        }
+
+        // Itinerary Generator
+        function generateItinerary() {
+            const days = parseInt(document.getElementById('planDays').value);
+            const style = document.getElementById('planStyle').value;
+            const hub = document.getElementById('planHub').value;
+            const container = document.getElementById('itineraryTimeline');
+            const summaryTag = document.getElementById('planSummaryTag');
+
+            summaryTag.innerText = `${days} Days (${hub} Start)`;
+            container.innerHTML = '';
+
+            let timeline = [];
+
+            if (days === 3) {
+                timeline = [
+                    { day: 'Day 1', title: `Arrival in ${hub === 'MNL' ? 'Manila' : 'Cebu'} & City Heritage Tour`, desc: 'Explore historical landmarks, enjoy traditional local seafood dinner.' },
+                    { day: 'Day 2', title: style === 'beach' ? 'Day Trip to Island Sandbar & Snorkeling' : 'Volcano Hike / Scuba Diving Expedition', desc: 'Full day adventure with boat rental, seafood lunch on the beach.' },
+                    { day: 'Day 3', title: 'Local Craft Market Shopping & Departure', desc: 'Pick up dried mangoes and handmade souvenirs before heading to airport.' }
+                ];
+            } else if (days === 7) {
+                timeline = [
+                    { day: 'Day 1', title: `Arrival in ${hub === 'MNL' ? 'Manila' : 'Cebu'}`, desc: 'Check in hotel, relax and enjoy sunset dinner along the bay.' },
+                    { day: 'Day 2-3', title: 'Fly to El Nido / Coron Lagoon Tour', desc: 'Island hopping across Kayangan Lake, Secret Lagoon, and coral garden snorkles.' },
+                    { day: 'Day 4-5', title: style === 'beach' ? 'Boracay White Beach relaxation & sunset sailing' : 'Siargao Cloud 9 surfing lesson & Rock pools', desc: 'Enjoy water sports, beach massages, and nightlife.' },
+                    { day: 'Day 6', title: 'Bohol Countryside Tour & Tarsier Sanctuary', desc: 'See the Chocolate Hills and enjoy a cruise on Loboc River.' },
+                    { day: 'Day 7', title: 'Return Flight & Souvenir Shopping', desc: 'Fly back to international airport hub for departure.' }
+                ];
+            } else {
+                timeline = [
+                    { day: 'Day 1-2', title: 'Heritage & Food Tour', desc: 'Explore Spanish colonial history and local culinary hotspots.' },
+                    { day: 'Day 3-6', title: 'Palawan Paradise Exploration (El Nido & Coron)', desc: 'Explore shipwreck diving, island hopping, and underground river.' },
+                    { day: 'Day 7-10', title: 'Central Visayas (Cebu & Bohol)', desc: 'Swim with gentle marine life, visit Chocolate Hills, and enjoy beach resorts.' },
+                    { day: 'Day 11-14', title: style === 'adventure' ? 'Mountain Trek / Siargao Surf' : 'Chill at Boracay & Luxury Beach Resort', desc: 'Finish your vacation with tropical relaxation and sunset catamaran cruises.' }
+                ];
+            }
+
+            timeline.forEach((item, index) => {
+                const step = document.createElement('div');
+                step.className = 'flex items-start space-x-4 p-4 rounded-2xl bg-slate-50 border border-slate-100 hover:border-phTeal/40 transition-colors';
+                step.innerHTML = `
+                    <div class="flex-shrink-0 w-12 h-12 bg-phTeal text-white font-bold rounded-xl flex items-center justify-center text-xs shadow-md">
+                        ${item.day}
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 text-sm sm:text-base">${item.title}</h4>
+                        <p class="text-xs sm:text-sm text-slate-600 mt-1">${item.desc}</p>
+                    </div>
+                `;
+                container.appendChild(step);
+            });
+        }
+
+        // Budget Calculator
+        function calculateBudget() {
+            const people = parseInt(document.getElementById('calcPeople').value) || 1;
+            const nights = parseInt(document.getElementById('calcNights').value) || 1;
+            const tier = document.getElementById('calcTier').value;
+
+            let ratePerDay = 90; // default mid
+            if (tier === 'backpacker') ratePerDay = 35;
+            if (tier === 'luxury') ratePerDay = 250;
+
+            const stayRate = ratePerDay * 0.5;
+            const foodRate = ratePerDay * 0.28;
+            const actRate = ratePerDay * 0.22;
+
+            const totalUSD = ratePerDay * nights * people;
+            const stayUSD = Math.round(stayRate * nights * people);
+            const foodUSD = Math.round(foodRate * nights * people);
+            const actUSD = Math.round(actRate * nights * people);
+
+            const totalPHP = Math.round(totalUSD * 56);
+
+            document.getElementById('calcTotalUSD').innerText = `$${totalUSD.toLocaleString()}`;
+            document.getElementById('calcTotalPHP').innerText = `≈ ₱${totalPHP.toLocaleString()} PHP`;
+            document.getElementById('calcStayUSD').innerText = `$${stayUSD.toLocaleString()}`;
+            document.getElementById('calcFoodUSD').innerText = `$${foodUSD.toLocaleString()}`;
+            document.getElementById('calcActUSD').innerText = `$${actUSD.toLocaleString()}`;
+        }
+
+        // FAQ Toggle Logic
+        function toggleFaq(index) {
+            const ans = document.getElementById(`faqAns-${index}`);
+            const icon = document.getElementById(`faqIcon-${index}`);
+
+            if (ans.classList.contains('hidden')) {
+                ans.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                ans.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        // Destination Modal Popup
+        function openDestModal(destId) {
+            const item = destinations.find(d => d.id === destId);
+            if (!item) return;
+
+            const content = document.getElementById('modalContent');
+            content.innerHTML = `
+                <div class="relative h-64 sm:h-80">
+                    <img src="${item.image}" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent flex items-end p-6">
+                        <div>
+                            <span class="bg-phYellow text-slate-900 text-xs font-bold px-3 py-1 rounded-full">${item.tag}</span>
+                            <h3 class="text-2xl sm:text-3xl font-bold text-white mt-2">${item.title}</h3>
+                            <p class="text-xs text-slate-300"><i class="fa-solid fa-location-dot text-phYellow mr-1"></i>${item.region} Group</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 space-y-4">
+                    <p class="text-slate-600 text-sm leading-relaxed">${item.desc}</p>
+                    
+                    <div>
+                        <h4 class="font-bold text-slate-900 text-sm mb-2">Key Highlights & Activities:</h4>
+                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            ${item.highlights.map(h => `
+                                <li class="text-xs bg-slate-50 border border-slate-100 p-2.5 rounded-xl flex items-center space-x-2 text-slate-700">
+                                    <i class="fa-solid fa-circle-check text-phTeal"></i>
+                                    <span>${h}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="pt-4 border-t flex justify-between items-center">
+                        <span class="text-xs text-slate-500">Travel rating: <strong class="text-slate-800">${item.rating} / 5.0</strong></span>
+                        <button onclick="closeModal('destModal'); showToast('Added destination to saved favorites!')" class="bg-phTeal text-white font-bold px-6 py-2.5 rounded-xl text-sm hover:bg-teal-700">
+                            Save Destination
+                        </button>
+                    </div>
+                </div>
+            `;
+            openModal('destModal');
+        }
+
+        // Modal Utilities
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Toast Notification Utility
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').innerText = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        function copyItinerary() {
+            showToast('Itinerary plan copied to your clipboard!');
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
